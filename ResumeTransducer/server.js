@@ -13,7 +13,10 @@ app.listen(3000, function () {
 const Promise = require('bluebird')
  
 const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
- 
+
+app.get('/convert', function (req, res) {
+    res.send('Hello World!')
+})
 getAsync("java -cp 'bin/*:../GATEFiles/lib/*:../GATEFiles/bin/gate.jar:lib/*' code4goal.antony.resumeparser.ResumeParserProgram '/Users/harpreetsingh/Google Drive/Resume/HarpreetSinghResume.pdf'  /Users/harpreetsingh/Desktop/harpreetresume.json").then(data => {
   console.log('cmd data', data)
 }).catch(err => {
